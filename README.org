@@ -1,0 +1,8 @@
+* Domoio Firmware
+** Build Instructions
+#+BEGIN_SRC sh
+  mkdir build && cd build
+  cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/ArduinoToolchain.cmake ..
+  make
+  make upload
+#+END_SRC

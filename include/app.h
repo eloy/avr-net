@@ -3,10 +3,10 @@
 #include "psock.h"
 #include "uipopt.h"
 
-typedef struct hello_world_state {
-  struct psock p;
-  char inputbuffer[10];
-  char name[40];
+typedef struct uip_context {
+  struct psock psock;
+  char inputbuffer[128];
+  char name[128];
 } uip_tcp_appstate_t;
 
 

@@ -1,6 +1,6 @@
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
+# set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 cmake_minimum_required (VERSION 2.8.8)
-project(uip)
+project(uip C CXX)
 set (PROJECT_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Setup the Arduino SDK
@@ -23,6 +23,7 @@ set(SRC ${SRC}
   ./uip/uip.c
   ./uip/uip_arp.c
   ./uip/uiplib.c
+  ./uip/uip_callback.c
 )
 
 
@@ -62,4 +63,12 @@ set(SRC ${SRC}
 generate_arduino_library(avr-net
   SRCS ${SRC}
   BOARD ${ARDUINO_BOARD}
+)
+link_directories(./build)
+
+generate_arduino_firmware(test
+  SRCS ./src/main.cc
+  LIBS avr-net
+  BOARD ${ARDUINO_BOARD}
+  PORT ${SERIAL_PORT}
 )

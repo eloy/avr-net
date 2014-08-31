@@ -11,9 +11,7 @@
 //Counted time
 clock_time_t clock_datetime = 0;
 
-//Overflow itnerrupt
-ISR(TIMER0_OVF_vect)
-{
+ISR(TIMER0_OVF_vect) {
 	clock_datetime += 1;
 	TIFR0 |= (1<<TOV0);
 }
