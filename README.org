@@ -1,4 +1,4 @@
-* Domoio Firmware
+* AVR-Net Full network stack and network drivers
 ** Build Instructions
 #+BEGIN_SRC sh
   mkdir build && cd build
