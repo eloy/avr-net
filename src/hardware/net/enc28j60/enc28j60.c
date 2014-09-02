@@ -328,7 +328,8 @@ void enc28j60Init(void)
   enc28j60WriteOp(ENC28J60_BIT_FIELD_SET, EIE, EIE_INTIE|EIE_PKTIE);
   // enable packet reception
   enc28j60WriteOp(ENC28J60_BIT_FIELD_SET, ECON1, ECON1_RXEN);
-  /*
+
+
   	enc28j60PhyWrite(PHLCON, 0x0AA2);
 
   	// setup duplex ----------------------
@@ -358,7 +359,7 @@ void enc28j60Init(void)
   	enc28j60WriteOp(ENC28J60_BIT_FIELD_SET, ECON1, ECON1_RXEN);
 
   	// setup duplex ----------------------
-  */
+
 }
 
 void enc28j60PacketSend(unsigned int len1, unsigned char* packet1, unsigned int len2, unsigned char* packet2)
@@ -526,5 +527,3 @@ void enc28j60RegDump(void)
 	_delay_ms(25);
 }
 */
-
-

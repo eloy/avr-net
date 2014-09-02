@@ -20,6 +20,7 @@ include_directories(./include)
 include_directories(./src/include)
 set(SRC ${SRC}
     ./src/uip_callback.c
+    ./src/core.cc
 )
 
 
@@ -64,6 +65,7 @@ set(SRC ${SRC}
 generate_arduino_library(avr-net
   SRCS ${SRC}
   BOARD ${ARDUINO_BOARD}
+  NO_AUTOLIBS
 )
 link_directories(./build)
 
@@ -72,4 +74,5 @@ generate_arduino_firmware(test
   LIBS avr-net
   BOARD ${ARDUINO_BOARD}
   PORT ${SERIAL_PORT}
+  NO_AUTOLIBS
 )
