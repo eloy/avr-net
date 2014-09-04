@@ -2,7 +2,7 @@
 ** Build Instructions
 #+BEGIN_SRC sh
   mkdir build && cd build
-  cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/ArduinoToolchain.cmake ..
+  cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/ArduinoToolchain.cmake -DCMAKE_INSTALL_PREFIX:PATH=. ..
   make
   make upload
 #+END_SRC

@@ -1,5 +1,4 @@
 #include "uip_callback.h"
-#include "client.h"
 
 uip_callback callback;
 

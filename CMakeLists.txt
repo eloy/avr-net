@@ -15,12 +15,17 @@ set(ARDUINO_BOARD uno)
 
 include_directories(./include)
 
-
 # AVRNET core
 include_directories(./src/include)
 set(SRC ${SRC}
     ./src/uip_callback.c
     ./src/core.cc
+)
+set(INSTALLABLE_HEADERS ${INSTALLABLE_HEADERS}
+  ./include/avrnet.h
+  ./include/network.h
+  ./include/app.h
+  ./src/include/uip_callback.h
 )
 
 
@@ -36,12 +41,33 @@ set(SRC ${SRC}
   ./src/uip/uip_arp.c
   ./src/uip/uiplib.c
 )
+set(INSTALLABLE_HEADERS ${INSTALLABLE_HEADERS}
+  ./src/uip/clock.h
+  ./src/uip/lc-addrlabels.h
+  ./src/uip/lc-switch.h
+  ./src/uip/lc.h
+  ./src/uip/psock.h
+  ./src/uip/pt.h
+  ./src/uip/timer.h
+  ./src/uip/uip-fw.h
+  ./src/uip/uip-neighbor.h
+  ./src/uip/uip-split.h
+  ./src/uip/uip.h
+  ./src/uip/uip_arch.h
+  ./src/uip/uip_arp.h
+  ./src/uip/uiplib.h
+  ./src/uip/uipopt.h
+)
 
 
 # ARV
 include_directories(./src/hardware/cpu/avr)
 set(SRC ${SRC}
 ./src/hardware/cpu/avr/clock-arch.c
+)
+set(INSTALLABLE_HEADERS ${INSTALLABLE_HEADERS}
+  ./src/hardware/cpu/avr/uip-conf.h
+  ./src/hardware/cpu/avr/clock-arch.h
 )
 
 
@@ -59,7 +85,6 @@ set(SRC ${SRC}
   ./src/hardware/net/enc28j60/network.c
 )
 
-
 # Create the shared library
 
 generate_arduino_library(avr-net
@@ -69,10 +94,13 @@ generate_arduino_library(avr-net
 )
 link_directories(./build)
 
-generate_arduino_firmware(test
-  SRCS ./src/main.cc
-  LIBS avr-net
-  BOARD ${ARDUINO_BOARD}
-  PORT ${SERIAL_PORT}
-  NO_AUTOLIBS
-)
+# generate_arduino_firmware(test
+#   SRCS ./src/main.cc
+#   LIBS avr-net
+#   BOARD ${ARDUINO_BOARD}
+#   PORT ${SERIAL_PORT}
+#   NO_AUTOLIBS
+# )
+
+# Install Files
+install (FILES ${INSTALLABLE_HEADERS} DESTINATION include)

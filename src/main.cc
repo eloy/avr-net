@@ -1,5 +1,4 @@
 #include "Arduino.h"
-#include "client.h"
 #include "avrnet.h"
 
 #define ETHADDR0		0x00
